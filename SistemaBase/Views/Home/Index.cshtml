@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+    
+}
+@if (TempData["Login Exitoso"] != null)
+{
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="loginModalLabel">Notificación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    @TempData["Login Exitoso"]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+    </script>
+    
+}
+
+<!-- Saludo pequeño alineado a la izquierda -->
+<p class="text-start small text-muted">
+    @ViewBag.Saludo <br />
+  
+</p>
+
+
+<div class="text-center mt-4">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
