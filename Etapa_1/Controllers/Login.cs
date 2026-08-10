@@ -2,11 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Capa_Datos;
 using Capa_Logica;
+using Capa_Modelos;
 
-
-using SistemaBase.Models;
-
-namespace SistemaBase.Controllers
+namespace Etapa_1.Controllers
 {
     public class Login : Controller
     {

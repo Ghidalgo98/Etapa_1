@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-
-using SistemaBase.Models;
+using Capa_Modelos;
 
 
 namespace Capa_Datos

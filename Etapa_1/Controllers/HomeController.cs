@@ -1,9 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SistemaBase.Models;
+using Etapa_1.Controllers;
 using Microsoft.Extensions.Logging;
+using Capa_Modelos;
 
-namespace SistemaBase.Controllers
+namespace Etapa_1.Controllers
 {
     public class HomeController : Controller
     {

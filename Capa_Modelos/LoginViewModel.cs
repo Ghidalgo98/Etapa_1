@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SistemaBase.Models
+namespace Capa_Modelos
 {
     public class LoginViewModel
     {

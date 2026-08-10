@@ -2,7 +2,7 @@ using Capa_Datos;
 using Capa_Logica;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
-using SistemaBase.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

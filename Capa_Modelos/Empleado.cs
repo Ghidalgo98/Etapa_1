@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SistemaBase.Models;
+namespace Capa_Modelos;
 
 public partial class Empleado
 {

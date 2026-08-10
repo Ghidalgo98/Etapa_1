@@ -1,5 +1,5 @@
 ﻿using Capa_Datos;
-using SistemaBase.Models;
+using Capa_Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

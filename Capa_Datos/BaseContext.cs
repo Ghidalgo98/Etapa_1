@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Capa_Modelos;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
-using SistemaBase.Models;
 
 namespace Capa_Datos;
 
