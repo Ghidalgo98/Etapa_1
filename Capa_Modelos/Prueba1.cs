@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelos
 {
-    internal class Pruebas
+    internal class Prueba1
     {
     }
 }
