@@ -1,121 +1,64 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] </title>
+    <title>@ViewData["Title"] - SistemaBase</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SistemaBase.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            
-            
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <!-- 🔹 Home -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">🏠 Home</a>
-                        </li>
-                    <!-- 🔹 Menú principal -->
-                        <li class="nav-item dropdown">
-                            
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="mantenimientosMenu" role="button" data-bs-toggle="dropdown">
-                            🛠️ Mantenimientos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="mantenimientosMenu">
-                            <!-- Submenú Usuarios -->
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">👥 Usuarios</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Insertar_Usuario">➕ Insertar usuario</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Modificar_Usuario">✏️ Modificar usuario</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Consultar_Usuarios">🔍 Consultar usuarios</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Inhabilitar_Usuario">🚫 Inhabilitar usuario</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    </ul>
-                    @if (Context.Session.GetString("Usuario") != null)
-                    {
-                        <div class="d-flex flex-column me-3">
-                            <span class="navbar-text small text-muted">
-                                Usuario logueado: <strong>@Context.Session.GetString("Usuario")</strong>
-                            </span>
-                            <span id="fechaHora" class="navbar-text small text-muted"></span>
-                        </div>
-                        <a class="btn btn-outline-danger btn-sm" asp-controller="Login" asp-action="Logout">
-                            Logout
-                        </a>
-                    }
-
-
-                </div>
-            </div>
-        </nav>
+    <!-- 🔹 Navbar superior -->
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" asp-controller="Home" asp-action="Index">
+            Carnes La Casona
+        </a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (Context.Session.GetString("Usuario") != null)
+        {
+            <span class="navbar-text text-white small ms-auto me-3">
+                Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
+            </span>
+            <a class="btn btn-outline-light btn-sm me-2" asp-controller="Login" asp-action="Logout">Logout</a>
+        }
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 🔹 Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Home" asp-action="Index">🏠 Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Venta" asp-action="Index">💵 Ventas</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Compra" asp-action="Index">📦 Compras</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Cliente" asp-action="Index">👥 Clientes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Reporte" asp-action="Index">📊 Reportes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-controller="Usuario" asp-action="Consultar_Usuarios">⚙️ Usuarios</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 🔹 Contenido principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <!-- 🔹 Footer -->
+    <footer class="border-top footer text-muted mt-3">
         <div class="container">
-            &copy; 2026 - SistemaBase - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - SistemaBase - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-    
-    
-    <script> //Métodos de JavaScript
-        function actualizarFechaHora() {
-            const ahora = new Date();
-            const opciones = {
-                day: '2-digit', month: '2-digit', year: 'numeric',
-                hour: '2-digit', minute: '2-digit'
-            };
-            document.getElementById("fechaHora").textContent =
-                ahora.toLocaleString("es-CR", opciones);
-        }
-
-        actualizarFechaHora(); // inicializa al cargar
-    </script>
-
-    <script>
-        document.querySelectorAll('.dropdown-submenu .dropdown-toggle').forEach(function (element) {
-            element.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                let submenu = this.nextElementSibling;
-                if (submenu) {
-                    submenu.classList.toggle('show');
-                }
-            });
-        });
-
-        // Cierra submenús al cerrar el dropdown principal
-        document.querySelectorAll('.dropdown').forEach(function (dropdown) {
-            dropdown.addEventListener('hidden.bs.dropdown', function () {
-                this.querySelectorAll('.dropdown-menu.show').forEach(function (submenu) {
-                    submenu.classList.remove('show');
-                });
-            });
-        });
-    </script>
-
 </body>
 </html>

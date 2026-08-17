@@ -1,47 +1,48 @@
-using System.Diagnostics;
+ï»¿using Capa_Modelos; 
 using Microsoft.AspNetCore.Mvc;
-using Etapa_1.Controllers;
-using Microsoft.Extensions.Logging;
-using Capa_Modelos;
+using Capa_Logica;
 
-namespace Etapa_1.Controllers
+namespace TuProyecto.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _config;
-
-        public HomeController(ILogger<HomeController> logger, IConfiguration config)
-            
+        private readonly Usuario_Login _usuariologinLogico;
+        public HomeController(Usuario_Login usuarioLogin)
         {
-            _logger = logger;
-            _config = config;
-        }
 
+            _usuariologinLogico = usuarioLogin;
+        }
+        [HttpGet]
         public IActionResult Index()
         {
-            var usuarioSesion = HttpContext.Session.GetString("Usuario");
-            string nombreApp = "Carnes La Casona"; // o lo lees desde appsettings.json
-
-            ViewBag.Saludo = $"¡Bienvenido, a {nombreApp}!";
-            ViewBag.Usuario = usuarioSesion;
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(LoginViewModel ModeloLogin)
         {
-            var usuarioSesion = HttpContext.Session.GetString("Usuario");
-            // Leer nombre de la app desde appsettings.json
-            string nombreApp = _config["AppSettings:NombreApp"] ?? "MiAplicación";
-            ViewBag.Saludo = $"¡Bienvenido a {nombreApp}!";
-            //ViewBag.usuario= usuarioSesion;
-            return View();
+            var usuario = _usuariologinLogico.Login(ModeloLogin.Username, ModeloLogin.Password);
+
+            if (usuario != null)
+            {
+                HttpContext.Session.SetString("Usuario", usuario.Usuario_Logueo);
+                TempData["Login Exitoso"] = "Login Exitoso!";
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Error = "Usuario o contraseÃ±a incorrectos";
+                return View(ModeloLogin);
+            }
+
+
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            TempData["LogoutExitoso"] = "Â¡Cierre de sesiÃ³n exitoso!";
+            return RedirectToAction("Index", "Login");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }

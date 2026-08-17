@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SistemaBase</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+</head>
+
+<body>
+    <!-- 🔹 Navbar superior -->
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" asp-controller="Home" asp-action="Index">
+            Carnes La Casona
+        </a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (Context.Session.GetString("Usuario") != null)
+        {
+            <span class="navbar-text text-white small ms-auto me-3">
+                Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
+            </span>
+            <span id="fechaHora" class="navbar-text text-white small me-3"></span>
+            <a class="btn btn-outline-light btn-sm me-2" asp-controller="Login" asp-action="Logout">Logout</a>
+        }
+    </header>
+    @if (Context.Session.GetString("Usuario") != null)
+    {
+        <span class="navbar-text text-white small ms-auto me-3">
+            Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
+        </span>
+        <span id="fechaHora" class="navbar-text text-white small me-3"></span>
+        <a class="btn btn-outline-light btn-sm me-2" asp-controller="Login" asp-action="Logout">Logout</a>
+    }
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 🔹 Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <h5 class="px-3 text-white">Carnes La Casona</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" asp-controller="Dashboard" asp-action="Index">
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Venta" asp-action="Index">
+                                <span data-feather="shopping-cart"></span>
+                                Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Compra" asp-action="Index">
+                                <span data-feather="box"></span>
+                                Compras
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Cliente" asp-action="Index">
+                                <span data-feather="users"></span>
+                                Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Reporte" asp-action="Index">
+                                <span data-feather="bar-chart-2"></span>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Usuario" asp-action="Index">
+                                <span data-feather="settings"></span>
+                                Usuarios
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- 🔹 Sección extra tipo “Saved Reports” -->
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Reportes guardados</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Mes actual</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Último trimestre</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Engagement social</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Cierre anual</a></li>
+                    </ul>
+
+                    <!-- 🔹 Opciones al final -->
+                    <ul class="nav flex-column mt-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="#">⚙️ Settings</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">🚪 Sign out</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <!-- 🔹 Contenido principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- 🔹 Footer -->
+    <footer class="border-top footer text-muted mt-3">
+        <div class="container">
+            &copy; 2026 - SistemaBase - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { delay: 2500 }) // 4 segundos
+            });
+            toastList.forEach(toast => toast.show());
+        });
+    </script>
+
+    <script>
+        function actualizarFechaHora() {
+            const ahora = new Date();
+            const opciones = {
+                day: '2-digit', month: '2-digit', year: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            };
+            document.getElementById("fechaHora").textContent =
+                ahora.toLocaleString("es-CR", opciones);
+        }
+        setInterval(actualizarFechaHora, 1000);
+        actualizarFechaHora();
+    </script>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+</body>
+</html>
