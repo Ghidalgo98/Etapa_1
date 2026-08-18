@@ -3,27 +3,8 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<!-- 🔹 Notificación flotante fija -->
-@if (TempData["Login Exitoso"] != null)
-{
-    <div class="toast-container position-fixed"
-         style="top:20px; right:50%; transform:translateX(50%); z-index:1080; max-width:350px;">
-        <div class="toast border-0 shadow-lg rounded-3"
-             role="alert" aria-live="assertive" aria-atomic="true"
-             style="background: linear-gradient(90deg, #28a745, #218838); color:white; font-size:0.9rem;">
-            <div class="d-flex align-items-center">
-                <!-- 🔹 Icono decorativo -->
-                <div class="p-2">
-                    <i class="bi bi-check-circle-fill" style="font-size:1.2rem;"></i>
-                </div>
-                <div class="toast-body p-0 m-0">
-                    <strong>Éxito:</strong> @TempData["Login Exitoso"]
-                </div>
-           
-            </div>
-        </div>
-    </div>
-}
+
+
 
 <!-- 🔹 Toolbar superior con título y botones -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

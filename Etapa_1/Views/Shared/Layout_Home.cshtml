@@ -7,7 +7,15 @@
     <title>@ViewData["Title"] - SistemaBase</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/adminlte.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 🔹 Pon dashboard.css al final -->
     <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+
 </head>
 
 <body>
@@ -44,7 +52,7 @@
             <!-- 🔹 Sidebar -->
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
                 <div class="position-sticky pt-3">
-                    <h5 class="px-3 text-white">Carnes La Casona</h5>
+                   
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active text-white" asp-controller="Dashboard" asp-action="Index">
