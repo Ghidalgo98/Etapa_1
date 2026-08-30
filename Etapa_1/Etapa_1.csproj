@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Login2\" />
+    <Folder Include="wwwroot\Images\Iconos\" />
   </ItemGroup>
 
   <ItemGroup>
