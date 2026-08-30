@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Etapa_1.Controllers.Dashboard
 {
-    public class DashboardController : Controller
+    public class AdministrativoController : Controller
     {
         // GET: DashboardController
         public ActionResult Index()

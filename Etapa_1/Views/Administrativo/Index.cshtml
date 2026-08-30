@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "Layout_Home";
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Administrativo";
 }
 
 
@@ -8,7 +8,7 @@
 
 <!-- 🔹 Toolbar superior con título y botones -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Dashboard</h1>
+    <h1 class="h2">Panel Administrativo</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -48,7 +48,10 @@
             <div class="card-body">
                 <h5 class="card-title">Consultas</h5>
                 <p class="card-text">Módulo para la Gestión de Mantenimientos del Sistema.</p>
-                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+                <a asp-controller="Mantenimientos" asp-action="Index"
+                   class="btn btn-primary btn-sm">
+                    Ingresar
+                </a>
             </div>
         </div>
     </div>
@@ -60,7 +63,10 @@
             <div class="card-body">
                 <h5 class="card-title">Reportes</h5>
                 <p class="card-text">Módulo para la Gestión de Reportes del Sistema.</p>
-                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+                <a asp-controller="Mantenimientos" asp-action="Index"
+                   class="btn btn-primary btn-sm">
+                    Ingresar
+                </a>
             </div>
         </div>
     </div>
@@ -70,7 +76,10 @@
             <div class="card-body">
                 <h5 class="card-title">Seguridad</h5>
                 <p class="card-text">Módulo para la Gestión de Seguridad del Sistema</p>
-                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+                <a asp-controller="Mantenimientos" asp-action="Index"
+                   class="btn btn-primary btn-sm">
+                    Ingresar
+                </a>
             </div>
         </div>
     </div>
