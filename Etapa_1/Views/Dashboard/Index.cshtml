@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "Layout_Home";
+    ViewData["Title"] = "Dashboard";
+}
+
+
+
+
+<!-- 🔹 Toolbar superior con título y botones -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Opciones
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" asp-controller="Login" asp-action="Logout">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                <li><a class="dropdown-item" href="#">Ayuda</a></li>
+                <li><a class="dropdown-item" href="#">Sobre el programa</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 🔹 Contenido principal con tarjetas -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Ventasabx</h5>
+                <p class="card-text">Resumen de las ventas realizadas esta semana.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Compras</h5>
+                <p class="card-text">Resumen de las compras registradas.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Clientes</h5>
+                <p class="card-text">Listado de clientes activos y recientes.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Usuarios</h5>
+                <p class="card-text">Gestión de usuarios del sistema.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🔹 Script para inicializar toast -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl, { delay: 2500, autohide: true });
+        });
+        toastList.forEach(toast => toast.show());
+    });
+</script>
+
+

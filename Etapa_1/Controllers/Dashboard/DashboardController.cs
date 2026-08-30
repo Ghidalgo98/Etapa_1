@@ -1,29 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Etapa_1.Controllers.Usuarios
+namespace Etapa_1.Controllers.Dashboard
 {
-    public class MantenimientosController : Controller
+    public class DashboardController : Controller
     {
-        // GET: MantenimientosController
+        // GET: DashboardController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: MantenimientosController/Details/5
+        // GET: DashboardController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: MantenimientosController/Create
+        // GET: DashboardController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MantenimientosController/Create
+        // POST: DashboardController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +38,13 @@ namespace Etapa_1.Controllers.Usuarios
             }
         }
 
-        // GET: MantenimientosController/Edit/5
+        // GET: DashboardController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: MantenimientosController/Edit/5
+        // POST: DashboardController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +59,13 @@ namespace Etapa_1.Controllers.Usuarios
             }
         }
 
-        // GET: MantenimientosController/Delete/5
+        // GET: DashboardController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: MantenimientosController/Delete/5
+        // POST: DashboardController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
