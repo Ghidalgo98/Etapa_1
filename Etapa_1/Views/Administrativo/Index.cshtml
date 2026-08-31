@@ -1,99 +1,75 @@
 ﻿@{
-    Layout = "Layout_Home";
-    ViewData["Title"] = "Administrativo";
+    ViewBag.Title = "Panel Administrativo";
+    Layout = "~/Views/Shared/Layout_Home.cshtml"; //  layout principal
 }
 
 
 
+<section class="content">
+    <div class="container-fluid">
+        <!-- 🔹 Título -->
+        <h1 class="mb-4">@ViewBag.Title</h1>
 
-<!-- 🔹 Toolbar superior con título y botones -->
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Panel Administrativo</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Opciones
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" asp-controller="Login" asp-action="Logout">Cerrar sesión</a></li>
-                <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
-                <li><a class="dropdown-item" href="#">Ayuda</a></li>
-                <li><a class="dropdown-item" href="#">Sobre el programa</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- 🔹 Contenido principal con tarjetas -->
-<div class="row">
-    <div class="col-md-6">
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Mantenimientos</h5>
-                <p class="card-text">Módulo para la Gestión de Mantenimientos del Sistema</p>
-                <a asp-controller="Mantenimientos" asp-action="Index"
-                   class="btn btn-primary btn-sm">
-                    Ingresar
-                </a>
+        <!-- 🔹 Tarjetas -->
+        <div class="row">
+            <!-- Mantenimientos -->
+            <div class="col-lg-3 col-6 mb-4">
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h5 class="fw-normal">Mantenimientos</h5>
+                        <p>Gestión de Mantenimientos</p>
+                    </div>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <a href="@Url.Action("Index", "Mantenimientos")" class="small-box-footer">
+                        Ingresar <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Consultas</h5>
-                <p class="card-text">Módulo para la Gestión de Mantenimientos del Sistema.</p>
-                <a asp-controller="Mantenimientos" asp-action="Index"
-                   class="btn btn-primary btn-sm">
-                    Ingresar
-                </a>
+            <!-- Consultas -->
+            <div class="col-lg-3 col-6 mb-4">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h5 class="fw-normal">Consultas</h5>
+                        <p>Revisión y Reportes</p>
+                    </div>
+                    <div class="icon"><i class="fas fa-search"></i></div>
+                    <a href="@Url.Action("Index", "Consultas")" class="small-box-footer">
+                        Ingresar <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Reportes</h5>
-                <p class="card-text">Módulo para la Gestión de Reportes del Sistema.</p>
-                <a asp-controller="Mantenimientos" asp-action="Index"
-                   class="btn btn-primary btn-sm">
-                    Ingresar
-                </a>
+            <!-- Seguridad -->
+            <div class="col-lg-3 col-6 mb-4">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h5 class="fw-normal">Seguridad</h5>
+                        <p>Gestión de Usuarios y Roles</p>
+                    </div>
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <a href="@Url.Action("Index", "Seguridad")" class="small-box-footer">
+                        Ingresar <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Seguridad</h5>
-                <p class="card-text">Módulo para la Gestión de Seguridad del Sistema</p>
-                <a asp-controller="Mantenimientos" asp-action="Index"
-                   class="btn btn-primary btn-sm">
-                    Ingresar
-                </a>
+           
+            <!-- Reportes -->
+            <div class="col-lg-3 col-6 mb-4">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h5 class="fw-normal">Reportes</h5>
+                        <p>Generación de reportes</p>
+                    </div>
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <a href="@Url.Action("Index", "Reporte")" class="small-box-footer">
+                        Ingresar <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
             </div>
+
         </div>
     </div>
-</div>
-
-<!-- 🔹 Script para inicializar toast -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-        var toastList = toastElList.map(function (toastEl) {
-            return new bootstrap.Toast(toastEl, { delay: 2500, autohide: true });
-        });
-        toastList.forEach(toast => toast.show());
-    });
-</script>
-
+</section>
 

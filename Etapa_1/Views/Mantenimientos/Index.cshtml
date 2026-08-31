@@ -1,75 +1,91 @@
 ﻿@{
-    ViewBag.Title = "Panel Administrativo";
-    Layout = "~/Views/Shared/Layout_Home.cshtml"; //  layout principal
+    Layout = "Layout_Home";
+    ViewData["Title"] = "Administrativo";
 }
 
+<div class="container my-4">
+    <!-- Banner superior -->
+    <div class="alert alert-primary d-flex align-items-center justify-content-between shadow-sm mb-4" role="alert">
+        <div>
+            <i class="fas fa-tools me-2"></i>
+            <strong>Panel de Mantenimientos</strong>
+        </div>
+        <button class="btn btn-light btn-sm">Acciones rápidas</button>
+    </div>
 
-
-<section class="content">
-    <div class="container-fluid">
-        <!-- 🔹 Título -->
-        <h1 class="mb-4">@ViewBag.Title</h1>
-
-        <!-- 🔹 Tarjetas -->
-        <div class="row">
-            <!-- Mantenimientos -->
-            <div class="col-lg-3 col-6 mb-4">
-                <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h5 class="fw-normal">Mantenimientos</h5>
-                        <p>Gestión de Mantenimientos</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-tools"></i></div>
-                    <a href="@Url.Action("Index", "Mantenimientos")" class="small-box-footer">
-                        Ingresar <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Consultas -->
-            <div class="col-lg-3 col-6 mb-4">
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h5 class="fw-normal">Consultas</h5>
-                        <p>Revisión y Reportes</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-search"></i></div>
-                    <a href="@Url.Action("Index", "Consultas")" class="small-box-footer">
-                        Ingresar <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Seguridad -->
-            <div class="col-lg-3 col-6 mb-4">
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h5 class="fw-normal">Seguridad</h5>
-                        <p>Gestión de Usuarios y Roles</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                    <a href="@Url.Action("Index", "Seguridad")" class="small-box-footer">
-                        Ingresar <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
-           
-            <!-- Reportes -->
-            <div class="col-lg-3 col-6 mb-4">
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h5 class="fw-normal">Reportes</h5>
-                        <p>Generación de reportes</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-file-alt"></i></div>
-                    <a href="@Url.Action("Index", "Reporte")" class="small-box-footer">
-                        Ingresar <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
+    <!-- Barra de búsqueda -->
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Buscar mantenimiento...">
         </div>
     </div>
-</section>
 
+    <!-- Grid de mantenimientos -->
+    <div class="row text-center">
+        <!-- Usuarios -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-user-shield fa-2x mb-2 text-primary"></i>
+                    <h6>Usuarios</h6>
+                    <a href="@Url.Action("Index", "Usuarios")" class="btn btn-outline-primary btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personas -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-user fa-2x mb-2 text-success"></i>
+                    <h6>Personas</h6>
+                    <a href="@Url.Action("Index", "Personas")" class="btn btn-outline-success btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provincias -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-map fa-2x mb-2 text-info"></i>
+                    <h6>Provincias</h6>
+                    <a href="@Url.Action("Index", "Provincias")" class="btn btn-outline-info btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cantón -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-city fa-2x mb-2 text-warning"></i>
+                    <h6>Cantón</h6>
+                    <a href="@Url.Action("Index", "Canton")" class="btn btn-outline-warning btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distrito -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-map-marker-alt fa-2x mb-2 text-danger"></i>
+                    <h6>Distrito</h6>
+                    <a href="@Url.Action("Index", "Distrito")" class="btn btn-outline-danger btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="col-md-2 col-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-home fa-2x mb-2 text-secondary"></i>
+                    <h6>Dirección</h6>
+                    <a href="@Url.Action("Index", "Direccion")" class="btn btn-outline-secondary btn-sm">Ingresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
