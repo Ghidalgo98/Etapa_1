@@ -29,3 +29,9 @@ body {
         left: 100%;
         margin-top: -0.25rem;
     }
+/* Línea discreta debajo de cada ítem del menú */
+.nav-sidebar .nav-link {
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* línea tenue */
+    margin: 0 8px;
+    padding: 8px 12px;
+}

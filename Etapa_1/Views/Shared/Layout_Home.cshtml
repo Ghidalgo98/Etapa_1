@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SistemaBase</title>
+    <title>@ViewData["Title"] - Panel</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -56,69 +56,71 @@
         <!-- 🔹 Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="@Url.Action("Index", "Home")" class="brand-link">
-                <span class="brand-text font-weight-light">SistemaBase</span>
+                <span class="brand-text font-weight-light">Panel de Control</span>
             </a>
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                         <li class="nav-item">
+                           
                             <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                <i class="fa-solid fa-house nav-icon"></i>
+                                <i class="fa-solid fa-house nav-icon text-primary"></i>
                                 <p>Inicio</p>
                             </a>
+                           
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Administrativo" asp-action="Index">
-                                <i class="fa-solid fa-briefcase nav-icon"></i>
+                                <i class="fa-solid fa-briefcase nav-icon text-primary"></i>
                                 <p>Administrativo</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
-                                <p>Facturación</p>
+                                <p>Gestionar Facturación</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-hand-holding-dollar nav-icon"></i>
-                                <p>Cuentas por Cobrar</p>
+                                <p>Gestionar Cuentas por Cobrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-money-check-dollar nav-icon"></i>
-                                <p>Cuentas por Pagar</p>
+                                <p>Gestionar Cuentas por Pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="fa-solid fa-chart-line nav-icon"></i>
-                                <p>Ingresos</p>
+                                <i class="fa-solid fa-building-columns nav-icon"></i>
+                                <p>Gestionar Ingresos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-chart-pie nav-icon"></i>
-                                <p>Gastos</p>
+                                <p>Gestionar Gastos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-book nav-icon"></i>
-                                <p>Cuentas Contables</p>
+                                <p>Gestionar Cuentas Contables</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
                                 <i class="fa-solid fa-percent nav-icon"></i>
-                                <p>Impuestos</p>
+                                <p>Gestionar Impuestos y Retenciones</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="fa-solid fa-scale-balanced nav-icon"></i>
-                                <p>Presupuesto</p>
+                                <i class="fa-solid fa-sack-dollar nav-icon"></i>
+                                <p>Gestionar Presupuesto</p>
                             </a>
                         </li>
                     </ul>
