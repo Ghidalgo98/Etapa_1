@@ -9,10 +9,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- AdminLTE -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome 7 (local con webfonts) -->
+    <link rel="stylesheet" href="~/AdminLTE/plugins/FontAwesome/css/all.min.css" />
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/AdminLTE/plugins/DataTables/dataTables.bootstrap4.min.css" />
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/AdminLTE/plugins/Select2/select2.min.css" />
+
+    <!-- SweetAlert2 (tema Bootstrap4) -->
+    <link rel="stylesheet" href="~/AdminLTE/plugins/SweetAlert2/bootstrap-4.min.css" />
 
     <!-- Estilos propios -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -54,61 +63,61 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                <i class="nav-icon fas fa-home"></i>
+                                <i class="fa-solid fa-house nav-icon"></i>
                                 <p>Inicio</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Administrativo" asp-action="Index">
-                                <i class="nav-icon fas fa-briefcase"></i>
+                                <i class="fa-solid fa-briefcase nav-icon"></i>
                                 <p>Administrativo</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                                <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
                                 <p>Facturación</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-hand-holding-usd"></i>
+                                <i class="fa-solid fa-hand-holding-dollar nav-icon"></i>
                                 <p>Cuentas por Cobrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-money-check-alt"></i>
+                                <i class="fa-solid fa-money-check-dollar nav-icon"></i>
                                 <p>Cuentas por Pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-chart-line"></i>
+                                <i class="fa-solid fa-chart-line nav-icon"></i>
                                 <p>Ingresos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <i class="fa-solid fa-chart-pie nav-icon"></i>
                                 <p>Gastos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="fa-solid fa-book nav-icon"></i>
                                 <p>Cuentas Contables</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-percent"></i>
+                                <i class="fa-solid fa-percent nav-icon"></i>
                                 <p>Impuestos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="" asp-action="Index">
-                                <i class="nav-icon fas fa-balance-scale"></i>
+                                <i class="fa-solid fa-scale-balanced nav-icon"></i>
                                 <p>Presupuesto</p>
                             </a>
                         </li>
@@ -132,10 +141,25 @@
         </footer>
     </div>
 
-    <!-- 🔹 Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 🔹 Scripts locales -->
+    <script src="~/AdminLTE/plugins/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE/dist/js/adminlte.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="~/AdminLTE/plugins/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/plugins/DataTables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="~/AdminLTE/plugins/Chartjs/chart.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="~/AdminLTE/plugins/Select2/select2.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="~/AdminLTE/plugins/SweetAlert2/sweetalert2.all.min.js"></script>
+
+    <!-- Scripts propios -->
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
@@ -154,3 +178,4 @@
     </script>
 </body>
 </html>
+
