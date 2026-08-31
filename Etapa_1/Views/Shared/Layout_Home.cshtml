@@ -1,174 +1,143 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SistemaBase</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/adminlte.min.css" />
+
+    <!-- AdminLTE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- 🔹 Pon dashboard.css al final -->
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-
-
 </head>
 
-<body>
-    <!-- 🔹 Navbar superior -->
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" asp-controller="Home" asp-action="Index">
-            Carnes La Casona
-        </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        @if (Context.Session.GetString("Usuario") != null)
-        {
-            <span class="navbar-text text-white small ms-auto me-3">
-                Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
-            </span>
-            <span id="fechaHora" class="navbar-text text-white small me-3"></span>
-            <a class="btn btn-outline-light btn-sm me-2" asp-controller="Login" asp-action="Logout">Logout</a>
-        }
-    </header>
-    @if (Context.Session.GetString("Usuario") != null)
-    {
-        <span class="navbar-text text-white small ms-auto me-3">
-            Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
-        </span>
-        <span id="fechaHora" class="navbar-text text-white small me-3"></span>
-        <a class="btn btn-outline-light btn-sm me-2" asp-controller="Login" asp-action="Logout">Logout</a>
-    }
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- 🔹 Navbar superior -->
+        <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                Carnes La Casona
+            </a>
+            <ul class="navbar-nav ms-auto">
+                @if (Context.Session.GetString("Usuario") != null)
+                {
+                    <li class="nav-item">
+                        <span class="navbar-text text-white small me-3">
+                            Usuario: <strong>@Context.Session.GetString("Usuario")</strong>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span id="fechaHora" class="navbar-text text-white small me-3"></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-sm" asp-controller="Login" asp-action="Logout">Logout</a>
+                    </li>
+                }
+            </ul>
+        </nav>
 
-
-    <div class="container-fluid">
-        <div class="row">
-            <!-- 🔹 Sidebar -->
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
-                <div class="position-sticky pt-3">
-                   
-                    <ul class="nav flex-column">
+        <!-- 🔹 Sidebar -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="@Url.Action("Index", "Home")" class="brand-link">
+                <span class="brand-text font-weight-light">SistemaBase</span>
+            </a>
+            <div class="sidebar">
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                         <li class="nav-item">
-                            <a class="nav-link  text-white" asp-controller="Home" asp-action="Index">
-                                <span data-feather="home"></span>
-                                Inicio
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>Inicio</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="grid">Dashboard</span>
-                                Dashboard
+                            <a class="nav-link" asp-controller="Administrativo" asp-action="Index">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>Administrativo</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="Administrativo" asp-action="Index">
-                                <span data-feather="coffee"></span>
-                                Administrativo
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                                <p>Facturación</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="file-text"></span>
-                                Gestionar Facturacion
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="gift"></span>
-                                Gestionar Cuentas por Cobrar
-                            </a>
-                        </li>
-
-                       
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="dollar-sign"></span>
-                                Gestionar Cuentas por Pagar
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-hand-holding-usd"></i>
+                                <p>Cuentas por Cobrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="bar-chart"></span>
-                                Gestionar Ingresos
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-money-check-alt"></i>
+                                <p>Cuentas por Pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="trending-down"></span>
-                                Gestionar Gastos
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-chart-line"></i>
+                                <p>Ingresos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="book"></span>
-                                Gestionar Cuentas Contables
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>Gastos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="percent"></span>
-                                Gestionar Impuestos y Retenciones
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>Cuentas Contables</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="" asp-action="Index">
-                                <span data-feather="pie-chart"></span>
-                                Gestionar Presupuesto
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-percent"></i>
+                                <p>Impuestos</p>
                             </a>
-                      
-                        
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="" asp-action="Index">
+                                <i class="nav-icon fas fa-balance-scale"></i>
+                                <p>Presupuesto</p>
+                            </a>
+                        </li>
                     </ul>
+                </nav>
+            </div>
+        </aside>
 
-                    <!-- 🔹 Sección extra tipo “Saved Reports” -->
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Reportes guardados</span>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Mes actual</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Último trimestre</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Engagement social</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Cierre anual</a></li>
-                    </ul>
-
-                    <!-- 🔹 Opciones al final -->
-                    <ul class="nav flex-column mt-auto">
-                        <li class="nav-item"><a class="nav-link text-white" href="#">⚙️ Settings</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">🚪 Sign out</a></li>
-                    </ul>
+        <!-- 🔹 Contenido principal -->
+        <div class="content-wrapper">
+            <section class="content pt-3">
+                <div class="container-fluid">
+                    @RenderBody()
                 </div>
-            </nav>
-
-
-            <!-- 🔹 Contenido principal -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                @RenderBody()
-            </main>
+            </section>
         </div>
+
+        <!-- 🔹 Footer -->
+        <footer class="main-footer text-center">
+            <strong>&copy; 2026 Carnes La Casona.</strong> Todos los derechos reservados.
+        </footer>
     </div>
 
-    <!-- 🔹 Footer -->
-    <footer class="border-top footer text-muted mt-3">
-        <div class="container">
-           
-        </div>
-    </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-            var toastList = toastElList.map(function (toastEl) {
-                return new bootstrap.Toast(toastEl, { delay: 2500 }) // 4 segundos
-            });
-            toastList.forEach(toast => toast.show());
-        });
-    </script>
+    <!-- 🔹 Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 
     <script>
         function actualizarFechaHora() {
@@ -183,15 +152,5 @@
         setInterval(actualizarFechaHora, 1000);
         actualizarFechaHora();
     </script>
-
-
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace();
-    </script>
-
 </body>
 </html>
